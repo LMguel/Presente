@@ -191,7 +191,7 @@
     }
 
     .slide h2 {
-      font-size: 2.2em;
+      font-size: 3.2em;
       font-weight: 700;
       letter-spacing: 0.02em;
       text-shadow: none;
@@ -202,7 +202,7 @@
       word-break: break-word;
     }
     .slide p {
-      font-size: 1.1em;
+      font-size: 2em;
       line-height: 1.5;
       max-width: 95vw;
       padding: 0 8px;
@@ -236,22 +236,11 @@
       /* Para imagens pixeladas, pode-se usar image-rendering: crisp-edges; */
     }
     @media (max-width: 600px) {
-      .slide {
-        padding: 12px 0 0 0;
-      }
-      .img-container {
-        min-height: 30vh;
-        max-height: 40vh;
-      }
-      .img-container img {
-        height: 28vh;
-        max-height: 35vh;
-      }
       .slide h2 {
-        font-size: 1.3em;
+        font-size: 2em;
       }
       .slide p {
-        font-size: 1em;
+        font-size: 1.3em;
       }
     }
   </style>
@@ -341,10 +330,7 @@
         <h2>${img.titulo}</h2>
         <p>${img.texto}</p>
       `;
-      // Adiciona corações atrás da imagem
-      const imgContainer = slide.querySelector('.img-container');
-      const heartsBg = criarHeartsSlideBg();
-      imgContainer.appendChild(heartsBg);
+      // Removido: corações atrás da imagem
     }
 
     function iniciarApresentacao() {
