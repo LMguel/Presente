@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Apresentação do Amor 💖</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body,
+    html {
+      width: 100%;
+      height: 100%;
+      font-family: 'Dancing Script', cursive, 'Segoe UI', sans-serif;
+      overflow: hidden;
+      background: #ffe6f0;
+      color: #550033;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+    .tela-inicial {
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffbad2, #ff5e93);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-align: center;
+      color: #fff0f6;
+      padding: 20px;
+      text-shadow: 2px 2px 5px #9b2c54cc;
+    }
+    .tela-inicial h1 {
+      font-size: 4em;
+      margin-bottom: 25px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      user-select: none;
+    }
+    .carta {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 25px;
+      padding: 25px 40px;
+      font-size: 2em;
+      margin-bottom: 40px;
+      backdrop-filter: blur(8px);
+      border: 3px solid #ffbfd2;
+      box-shadow: 0 0 15px 3px #ffbfd2aa;
+      font-style: italic;
+      user-select: none;
+    }
+    .carta::after {
+      content: " 💌";
+    }
+    .btn-presente {
+      background: #ffe1eb;
+      border: none;
+      padding: 18px 45px;
+      font-size: 1.8em;
+      color: #d1005b;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(209, 0, 91, 0.6);
+      transition: all 0.3s ease;
+      font-weight: 600;
+      user-select: none;
+    }
+    .btn-presente:hover {
+      background-color: #ffd1e3;
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(209, 0, 91, 0.9);
+    }
+    .btn-presente::before {
+      content: '🎁 ';
+    }
+    .hearts-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .heart {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      background: #ff3366;
+      transform: rotate(45deg);
+      animation: floatUp 6s infinite ease-in;
+      filter: drop-shadow(0 0 2px #ff6699);
+      opacity: 0.8;
+      border-radius: 5px;
+    }
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      background: #ff3366;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -12.5px;
+      left: 0;
+    }
+    .heart::after {
+      top: 0;
+      left: -12.5px;
+    }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(1) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.5) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    .apresentacao {
+      display: none;
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(135deg, #8e44ad, #c39bd3);
+      color: #fff0f6;
+      position: relative;
+      overflow: hidden;
+      font-family: 'Dancing Script', cursive, 'Segoe UI', sans-serif;
+      text-shadow: 1px 1px 5px #470056cc;
+      user-select: none;
+    }
+    .slide {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+      padding: 30px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    /* Container para imagem + corações */
+    .img-container {
+      position: relative;
+      width: 100%;
+      min-height: 50vh;
+      max-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .img-container img {
+      width: auto;
+      height: 60vh;
+      max-width: 100%;
+      max-height: 65vh;
+      object-fit: contain;
+      border-radius: 0;
+      position: relative;
+      z-index: 2;
+      background: none;
+      image-rendering: auto;
+      display: block;
+      margin: auto;
+    }
+    .hearts-slide-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: visible;
+    }
+
+    .slide h2 {
+      font-size: 3em;
+      margin-top: 15px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-shadow: 2px 2px 6px #34003d;
+      user-select: none;
+    }
+    .slide p {
+      margin-top: 15px;
+      font-size: 1.8em;
+      line-height: 1.4;
+      max-width: 750px;
+      font-style: italic;
+      user-select: text;
+      position: relative;
+      z-index: 3;
+    }
+    .zona-clique {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      cursor: pointer;
+      z-index: 10;
+      user-select: none;
+    }
+    .esquerda {
+      left: 0;
+    }
+    .direita {
+      right: 0;
+    }
+    /* Garante que todas as imagens mantenham a qualidade e proporção ao redimensionar */
+    img {
+      max-width: 100%;
+      height: auto;
+      image-rendering: auto;
+      object-fit: contain;
+      /* Para imagens pixeladas, pode-se usar image-rendering: crisp-edges; */
+    }
+  </style>
+</head>
+<body>
+  <div class="tela-inicial" id="tela-inicial">
+    <div class="hearts-bg" id="hearts-bg"></div>
+    <h1>Feliz Dia Dos Namorados 💖</h1>
+    <div class="carta">De: Luís Miguel<br>Para: Ana Carolina 💌</div>
+    <button class="btn-presente" onclick="iniciarApresentacao()">Abrir Presente</button>
+  </div>
+
+  <div class="apresentacao" id="apresentacao">
+    <div class="zona-clique esquerda" onclick="voltarSlide()"></div>
+    <div class="zona-clique direita" onclick="avancarSlide()"></div>
+    <div class="slide" id="slide">
+      <!-- Conteúdo JS -->
+    </div>
+    <audio id="musica" loop>
+      <source src="musica/exagerado.mp3" type="audio/mpeg" />
+      Seu navegador não suporta áudio.
+    </audio>
+  </div>
+
+  <script>
+    const imagens = [
+      { src: 'fotos/foto1.jpg', titulo: 'Nosso começo 💘', texto: 'Essa foi nossa primeira foto marcante, ainda éramos dois amiguinhos de escola.' },
+      { src: 'fotos/foto2.jpg', titulo: 'Minha paixão 💞', texto: 'Aqui foi a vez que fiquei horas apenas te olhando dormir, aí que percebi que estava completamente apaixonado por você.' },
+      { src: 'fotos/foto3.jpg', titulo: 'Nosso momento ✨', texto: 'Esse dia foi lindo, aí nós dois já imaginávamos um pouco nosso futuro, mas sem certeza de nada kkkk.' },
+      { src: 'fotos/foto4.jpg', titulo: 'A Clássica ❤️', texto: 'Essa nem preciso falar nada, é nossa foto clássica, a que oficializou nosso namoro.' },
+      { src: 'fotos/foto5.jpg', titulo: 'Nosso primeiro dia dos namorados 💍', texto: 'Como hoje, esse foi o nosso primeiro dia dos namorados juntos.' },
+      { src: 'fotos/foto6.jpg', titulo: 'Mais amor 💖', texto: 'Nossa primeira saídinha de barco juntos.' },
+      { src: 'fotos/foto7.jpg', titulo: 'Adultos viajando ✈️', texto: 'Quando tivemos nossa primeira viagem de adultos juntinhos.' },
+      { src: 'fotos/foto8.jpg', titulo: 'Lindos em Búzios 🌊', texto: 'Amo essa foto nossa em Búzios, lá foi muito lindo.' },
+      { src: 'fotos/foto9.jpg', titulo: 'Nós em SP 🏙️', texto: 'Nossa primeira viagem em SP.' },
+      { src: 'fotos/foto10.jpg', titulo: 'Aprendendo a Dirigir 🚗', texto: 'Esse dia tu acelerou muito, mostrou quem é que manda kkk.' },
+      { src: 'fotos/foto11.jpg', titulo: 'Meu primeiro aniversário com você 🎂', texto: 'Amei esse dia, aliás, adoro essa saia sua kkkk.' },
+      { src: 'fotos/foto12.jpg', titulo: 'Ano Novo 🎆', texto: 'Nosso primeiro ano novo juntos.' },
+      { src: 'fotos/foto13.jpg', titulo: 'Parte 2 🔄', texto: 'Essa é nossa primeira foto do nosso recomeço.' },
+      { src: 'fotos/foto14.jpg', titulo: 'El Capitan 🛶', texto: 'Primeiro passeio nosso sozinhos.' },
+      { src: 'fotos/foto15.jpg', titulo: 'Motorizados 🏍️', texto: 'Quando começamos a sair de carro sozinhos.' },
+      { src: 'fotos/foto16.jpg', titulo: 'Buda 🐱', texto: 'La gatita Buda.' },
+      { src: 'fotos/foto17.jpg', titulo: 'Fortões 💪', texto: 'Início da nossa vida fit.' },
+      { src: 'fotos/foto18.jpg', titulo: 'Rio 🏖️', texto: 'Indo pro Gilsons e marolar no RJ.' },
+      { src: 'fotos/foto19.jpg', titulo: 'Nós 💑', texto: 'Casal lindo da porra.' },
+      { src: 'fotos/foto20.jpg', titulo: 'Aniversário 2 🎉', texto: 'Esse foi o melhor aniversário de todos, graças a você.' },
+      { src: 'fotos/foto21.jpg', titulo: 'Ano Novo 2 🎇', texto: 'Viagem especial mas que gerou polêmicas kkk.' },
+      { src: 'fotos/foto22.jpg', titulo: 'Carnaval 🎭', texto: 'Carnaval muito bom nosso, só com as pessoas que eu mais amo na vida.' },
+      { src: 'fotos/foto23.jpg', titulo: 'Nosso último rolê 🎊', texto: 'Nossa última viagem com os amigos que nos divertimos muuuito.' },
+      { src: 'fotos/foto24.jpg', titulo: 'Te amo meu amorrrr 💗', texto: 'Quero passar muitos mais dias dos namorados, aniversários, finais de ano, carnaval e tudo ao seu lado. Você é o amor da minha vida, não sou nada sem você. Quero construir minha vida inteira ao seu lado, cada sorriso seu é um combustível a mais para mim e preciso dele todos os dias. Sei que sou eu que o causo, e também a ausência dele, mas vamos buscar sempre a nossa felicidade. Você com certeza é o amor da minha vida, e nunca tive dúvidas disso. TE AMOOOOOOOOOOOOOOOO 💘' }
+    ];
+
+    let indice = 0;
+
+    const slide = document.getElementById('slide');
+    const apresentacao = document.getElementById('apresentacao');
+    const telaInicial = document.getElementById('tela-inicial');
+    const musica = document.getElementById('musica');
+
+    function criarHeartsSlideBg() {
+      const container = document.createElement('div');
+      container.classList.add('hearts-slide-bg');
+      for(let i = 0; i < 15; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.style.left = `${Math.random() * 100}%`;
+        heart.style.top = `${50 + Math.random() * 50}%`; // flutua na parte inferior da imagem
+        heart.style.animationDelay = `${Math.random() * 6}s`;
+        heart.style.animationDuration = `${4 + Math.random() * 3}s`;
+        container.appendChild(heart);
+      }
+      return container;
+    }
+
+    function mostrarSlide(i) {
+      const img = imagens[i];
+      let imgTag = '';
+      if (i === 23) { // foto 24 (índice 23)
+        imgTag = `<img src="${img.src}" alt="${img.titulo}" style="height:35vh; max-width:100%; object-fit:contain; display:block; margin:auto;" />`;
+      } else {
+        imgTag = `<img src="${img.src}" alt="${img.titulo}" />`;
+      }
+      slide.innerHTML = `
+        <div class="img-container">
+          ${imgTag}
+        </div>
+        <h2>${img.titulo}</h2>
+        <p>${img.texto}</p>
+      `;
+      // Adiciona corações atrás da imagem
+      const imgContainer = slide.querySelector('.img-container');
+      const heartsBg = criarHeartsSlideBg();
+      imgContainer.appendChild(heartsBg);
+    }
+
+    function iniciarApresentacao() {
+      telaInicial.style.display = 'none';
+      apresentacao.style.display = 'flex';
+      mostrarSlide(indice);
+      musica.play();
+    }
+
+    function avancarSlide() {
+      indice++;
+      if (indice >= imagens.length) indice = 0;
+      mostrarSlide(indice);
+    }
+
+    function voltarSlide() {
+      indice--;
+      if (indice < 0) indice = imagens.length - 1;
+      mostrarSlide(indice);
+    }
+
+    // Cria corações animados de fundo na tela inicial
+    const heartsBgInicial = document.getElementById('hearts-bg');
+    for(let i = 0; i < 30; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = `${Math.random() * 100}%`;
+      heart.style.animationDelay = `${Math.random() * 6}s`;
+      heart.style.animationDuration = `${4 + Math.random() * 3}s`;
+      heartsBgInicial.appendChild(heart);
+    }
+  </script>
+</body>
+</html>
